@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe tabs</title>
+     
+</head>
+<body>
+    
+
+    <iframe
+        id="content-frame"
+        src="https://www.wikipedia.org/"
+        title="Selected website"
+        width="20%"
+        height="200px"
+       >
+    </iframe>
+    <h1>Choose the website</h1>
+    <button type="button" data-src="https://www.wikipedia.org/">Wikipedia</button>
+    <button type="button" data-src="https://www.google.com/maps?q=Eiffel+Tower&output=embed">Eiffel Tower map</button>
+    <button type="button" data-src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M">Songs</button>
+
+   <script>
+        const frame = document.getElementById("content-frame");
+        const buttons = document.querySelectorAll("button");
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function () {
+                if (this.getAttribute("data-src")) {
+                    frame.src = this.getAttribute("data-src");
+                    frame.title = this.textContent;
+                }
+            };
+        }
+    </script>
+</body>
+</html>
